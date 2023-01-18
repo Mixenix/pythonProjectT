@@ -20,7 +20,7 @@ ALL_SPRITES['numbers'] = (
     pygame.transform.scale2x(pygame.image.load('data\sprites\\8.png').convert_alpha()),
     pygame.transform.scale2x(pygame.image.load('data\sprites\\9.png').convert_alpha()),
 )
-# добавление спрайтов без увеличения
+# добавление спрайтов без увеличен
 ALL_SPRITES['background'] = pygame.image.load('data\sprites\\bg.png').convert_alpha()
 ALL_SPRITES['player'] = pygame.image.load('data\sprites\\bird.png').convert_alpha()
 ALL_SPRITES['intro'] = pygame.image.load('data\sprites\intro.png').convert_alpha()
