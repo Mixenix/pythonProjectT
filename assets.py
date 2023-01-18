@@ -1,11 +1,13 @@
 import pygame
 ALL_SPRITES = {}
 SOUNDS = {}
-pygame.init()
-pygame.display.set_mode((800, 600))
+pygame.init() # инициализация всех файлов библиотеки
+pygame.display.set_mode((800, 600)) # режим окна
+# добавление звуков
 SOUNDS['hit'] = pygame.mixer.Sound('data\sounds\hit.wav')
 SOUNDS['point'] = pygame.mixer.Sound('data\sounds\point.wav')
 SOUNDS['wing'] = pygame.mixer.Sound('data\sounds\wing.wav')
+# добавление спрайтов, а также их увеличение
 ALL_SPRITES['numbers'] = (
     pygame.transform.scale2x(pygame.image.load('data\sprites\\0.png').convert_alpha()),
     pygame.transform.scale2x(pygame.image.load('data\sprites\\1.png').convert_alpha()),
@@ -18,6 +20,7 @@ ALL_SPRITES['numbers'] = (
     pygame.transform.scale2x(pygame.image.load('data\sprites\\8.png').convert_alpha()),
     pygame.transform.scale2x(pygame.image.load('data\sprites\\9.png').convert_alpha()),
 )
+# добавление спрайтов без увеличения
 ALL_SPRITES['background'] = pygame.image.load('data\sprites\\bg.png').convert_alpha()
 ALL_SPRITES['player'] = pygame.image.load('data\sprites\\bird.png').convert_alpha()
 ALL_SPRITES['intro'] = pygame.image.load('data\sprites\intro.png').convert_alpha()
