@@ -9,7 +9,7 @@ SIZE = WIDTH, HEIGHT = 800, 600
 GROUNDY = HEIGHT * 0.8
 
 
-def welcomeScreen():
+def welcomeScreen():  # сцена экрана приветствия
     playerx = int(WIDTH / 5)
     playery = int(HEIGHT - ALL_SPRITES['player'].get_height()) / 2
     introx = int(WIDTH - ALL_SPRITES['intro'].get_width()) / 2
@@ -42,7 +42,8 @@ def welcomeScreen():
                 clock.tick(FPS)
 
 
-def mainGame():
+def mainGame():  # основная сцена
+    # запуск музыки в микшере
     pygame.mixer.music.stop()
     pygame.mixer.music.load('data/sounds/backmusic.mp3')
     pygame.mixer.music.play(loops=-1)
@@ -52,6 +53,7 @@ def mainGame():
     groundx = 0
     newPipe1 = getRandomPipe()
     newPipe2 = getRandomPipe()
+    # трубы со смещением
     upperPipes = [
         {'x': WIDTH + 200, 'y': newPipe1[0]['y']},
         {'x': WIDTH + 200 + (WIDTH / 2), 'y': newPipe2[0]['y']}
@@ -60,6 +62,7 @@ def mainGame():
         {'x': WIDTH + 200, 'y': newPipe1[1]['y']},
         {'x': WIDTH + 200 + (WIDTH / 2), 'y': newPipe2[1]['y']}
     ]
+    # скорости выведенные путём тестов
     pipespeedX = -4
     playerspeedY = -9
     playermaxspeedY = 10
@@ -110,6 +113,7 @@ def mainGame():
         SCREEN.blit(ALL_SPRITES['ground'], (groundx, GROUNDY))
         SCREEN.blit(ALL_SPRITES['player'], (playerx, playery))
         numbers = [int(x) for x in list(str(score))]
+        # получение ширины букв для их правильного отображения
         width = 0
         for number in numbers:
             width += ALL_SPRITES['numbers'][number].get_width()
