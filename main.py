@@ -3,7 +3,6 @@ import pygame
 from assets import ALL_SPRITES, SOUNDS
 from randomPipe import getRandomPipe
 
-
 FPS = 60
 clock = pygame.time.Clock()
 SIZE = WIDTH, HEIGHT = 800, 600
@@ -141,3 +140,47 @@ def collided(playerx, playery, upperPipes, lowerPipes):
             pygame.mixer.music.stop()
             gameOver()
     return False
+
+
+def gameOver():
+    SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption('Flappy Bird')
+    ALL_SPRITES['OVER'] = pygame.image.load('data/sprites/gameover.png').convert_alpha()
+    ALL_SPRITES['RETRY'] = pygame.image.load('data/sprites/retry.png').convert_alpha()
+    ALL_SPRITES['HOME'] = pygame.image.load('data/sprites/Home.png').convert_alpha()
+    SCREEN.blit(ALL_SPRITES['background'], (0, 0))
+    SCREEN.blit(ALL_SPRITES['HOME'], (10, 10))
+    SCREEN.blit(ALL_SPRITES['RETRY'], (75, 10))
+    SCREEN.blit(ALL_SPRITES['OVER'], (int(WIDTH - ALL_SPRITES['OVER'].get_width()) / 2, 0))
+    SCREEN.blit(ALL_SPRITES['ground'], (0, GROUNDY))
+    pygame.display.flip()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                mainGame()
+            pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_ARROW)
+            if pygame.mouse.get_pos()[0] > 75 and pygame.mouse.get_pos()[0] < 75 + ALL_SPRITES['RETRY'].get_width():
+                if pygame.mouse.get_pos()[1] > 10 and pygame.mouse.get_pos()[1] < 10 + ALL_SPRITES[
+                    'RETRY'].get_height():
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                        mainGame()
+            if pygame.mouse.get_pos()[0] > 10 and pygame.mouse.get_pos()[0] < 10 + ALL_SPRITES['HOME'].get_width():
+                if pygame.mouse.get_pos()[1] > 10 and pygame.mouse.get_pos()[1] < 10 + ALL_SPRITES[
+                    'HOME'].get_height():
+                    pygame.mouse.set_cursor(pygame.SYSTEM_CURSOR_HAND)
+                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                        welcomeScreen()
+
+
+if __name__ == "__main__":
+    pygame.init()
+    pygame.display.set_caption('Flappy Bird от Сафина')
+    SCREEN = pygame.display.set_mode(SIZE)
+    while True:
+        welcomeScreen()
+        mainGame()
