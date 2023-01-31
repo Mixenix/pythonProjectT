@@ -4,7 +4,7 @@ from assets import ALL_SPRITES, SOUNDS
 from randomPipe import getRandomPipe
 
 FPS = 60
-clock = pygame.time.Clock()
+clock = pygame.  time.Clock()
 SIZE = WIDTH, HEIGHT = 800, 600
 GROUNDY = HEIGHT * 0.8
 
@@ -74,7 +74,12 @@ def mainGame():  # основная сцена
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.KEYDOWN and (event.key == pygame.K_SPACE or event.key == pygame.K_UP):
+            if event.type == pygame.KEYDOWN and (event.key == pygame.K_SPACE or event.key == pygame.K_UP or event.key == pygame.K_q):
+                # рывок на клавишу Q
+                if event.key == pygame.K_q:
+                    pipespeedX = pipespeedX * 4
+                else:
+                    pipespeedX = -4
                 if playery > 0:
                     playerspeedY = playerspeedwhenflappping
                     playerflapbl = True
@@ -148,7 +153,7 @@ def collided(playerx, playery, upperPipes, lowerPipes):
 
 def gameOver():
     SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption('Flappy Bird')
+    pygame.display.set_caption('Flappy Bird от Амира')
     ALL_SPRITES['OVER'] = pygame.image.load('data/sprites/gameover.png').convert_alpha()
     ALL_SPRITES['RETRY'] = pygame.image.load('data/sprites/retry.png').convert_alpha()
     ALL_SPRITES['HOME'] = pygame.image.load('data/sprites/Home.png').convert_alpha()
