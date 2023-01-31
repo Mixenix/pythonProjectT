@@ -21,11 +21,17 @@ ALL_SPRITES['numbers'] = (
     pygame.transform.scale2x(pygame.image.load('data\sprites\\9.png').convert_alpha()),
 )
 # добавление спрайтов без увеличен
+ALL_SPRITES['OVER'] = pygame.image.load('data/sprites/gameover.png').convert_alpha()
+ALL_SPRITES['RETRY'] = pygame.image.load('data/sprites/retry.png').convert_alpha()
+ALL_SPRITES['HOME'] = pygame.image.load('data/sprites/Home.png').convert_alpha()
+ALL_SPRITES['savebttn'] = pygame.image.load('data\sprites\\savebttn.png').convert_alpha()
 ALL_SPRITES['background'] = pygame.image.load('data\sprites\\bg.png').convert_alpha()
 ALL_SPRITES['player'] = pygame.image.load('data\sprites\\bird.png').convert_alpha()
+ALL_SPRITES['playergreen'] = pygame.image.load('data\sprites\\birdgreen.png').convert_alpha()
+ALL_SPRITES['playerblue'] = pygame.image.load('data\sprites\\birdblue.png').convert_alpha()
 ALL_SPRITES['intro'] = pygame.image.load('data\sprites\intro.png').convert_alpha()
 ALL_SPRITES['ground'] = pygame.image.load('data\sprites\\ground.png').convert_alpha()
 ALL_SPRITES['pipe'] = (
     pygame.transform.rotate(pygame.image.load('data\sprites\\pipe.png').convert_alpha(), 180),
-    pygame.image.load('data\sprites\\pipe.png').convert_alpha()  #### LOWER PIPES
+    pygame.image.load('data\sprites\\pipe.png').convert_alpha()
 )
