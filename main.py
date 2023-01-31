@@ -81,6 +81,7 @@ def welcomeScreen():  # сцена экрана приветствия
 def mainGame():  # основная сцена
     global score, PLAYER
     score = 0
+    pygame.display.set_caption('Сохранённый рекорд: ' + str(highest_score))
     # запуск музыки в микшере
     pygame.mixer.music.stop()
     pygame.mixer.music.load('data/sounds/backmusic.mp3')
@@ -247,7 +248,7 @@ def save(score_to_save: int):
             scoredatafrmtd.append(int(i))
     highest_score = max(scoredatafrmtd)
     scorefile.close()
-    pygame.display.set_caption('Сохранённый рекорд: ' + str(highest_score))
+    pygame.display.set_caption('Сохранено! Сохранённый рекорд: ' + str(highest_score))
 
 
 if __name__ == "__main__":
